@@ -1,41 +1,37 @@
-# Project Charter - Plataforma de Gestão Sustentável e ESG (ODS 11)
+# Project Charter - Plataforma de Gestão Sustentável e ESG (ODS 11) - Fase TP3
 
-## 1. Visão Geral e Justificativa do Projeto
-O crescimento acelerado dos centros urbanos impõe desafios críticos de sustentabilidade, exigindo acompanhamento rigoroso do consumo de recursos, descarte de resíduos e disseminação de informações de impacto socioambiental. Este projeto desenvolve uma solução analítica e interativa em Python com o framework Streamlit, alinhada diretamente ao **ODS 11 (Cidades e Comunidades Sustentáveis)** e em consonância com o **ODS 12 (Consumo e Produção Responsáveis)** da Agenda 2030. 
+## 1. Visão Geral e Justificativa do Projeto (Revisada - TP3)
+O crescimento acelerado dos centros urbanos impõe desafios crescentes de gestão pública e privada, exigindo um acompanhamento ágil sobre consumo de recursos, descarte de resíduos e políticas sustentáveis. Este projeto evolui a solução analítica em Python para uma arquitetura orientada a microsserviços, integrando o frontend interativo em Streamlit a uma API RESTful em FastAPI e pipelines de raspagem dinâmica com Selenium. A solução permanece alinhada ao **ODS 11 (Cidades e Comunidades Sustentáveis)** e ao **ODS 12 (Consumo e Produção Responsáveis)** da Agenda 2030 das Nações Unidas.
 
-A plataforma resolve a dispersão de dados ao consolidar notícias reais do setor via Web Scraping, possibilitar a importação de bases tabulares complementares e viabilizar o monitoramento integrado para tomada de decisão em ESG.
+Nesta terceira fase, amplia-se a capacidade de ingestão com captura de dados dinâmicos, desacopla-se o consumo de dados via endpoints REST e estrutura-se o ecossistema textual para futura integração com Large Language Models (LLMs).
 
-## 2. Objetivos de Negócio e Metas do Projeto
-- **Centralização da Informação:** Coletar, processar e estruturar notícias públicas sobre sustentabilidade urbana através de extração automatizada.
-- **Interatividade e Usabilidade:** Disponibilizar um painel responsivo com filtros, métricas dinâmicas e persistência de dados.
-- **Flexibilidade Operacional:** Prover serviços de exportação e importação de bases de dados customizadas via arquivos CSV.
-- **Eficiência Computacional:** Minimizar tempo de processamento por meio de rotinas de cache em memória (`@st.cache_data`) e gerenciamento de estado (`st.session_state`).
+## 2. Objetivos de Negócio e Metas Reavaliadas
+- **Arquitetura Desacoplada e Escalável:** Construir uma API com FastAPI para servir dados de sustentabilidade via protocolos HTTP (`GET` e `POST`), garantindo a interoperabilidade com outros sistemas.
+- **Captura Avançada de Dados (Scraping Dinâmico):** Expandir a extração de notícias e dados públicos utilizando `Selenium` para contornar renderizações assíncronas em JavaScript.
+- **Navegação Modular (Multipáginas):** Reestruturar a interface gráfica em páginas independentes no Streamlit, melhorando a usabilidade e a distribuição das análises.
+- **Preparação para Inteligência Artificial:** Estruturar e sanear os corpos textuais coletados para viabilizar tarefas de Processamento de Linguagem Natural (PLN) e modelos de linguagem (LLMs) no TP4.
 
-## 3. Escopo do Projeto
+## 3. Escopo do Projeto (Atualizado - TP3)
 
-### No Escopo (Entregas TP1 e TP2):
-- Implementação de arquitetura baseada no ciclo de vida TDSP e metodologia CRISP-DM.
-- Coleta de dados reais via web scraping com a biblioteca `BeautifulSoup` em fontes públicas (Agência Brasil).
-- Persistência dos dados estruturados em formatos `.csv` e corpus textual em `.txt` no diretório `data/raw/`.
-- Aplicação web interativa desenvolvida em Streamlit com:
-  - Cache de dados para otimização de leitura.
-  - Estado de sessão para controle de dados em tempo de execução e contadores de auditoria.
-  - Central de download e upload para arquivos CSV com validação de colunas.
-  - Inserção manual dinâmica de registros sem reinício de processamento.
-- Documentação formalizada em Markdown na pasta `docs/`.
+### No Escopo (Entregas TP1, TP2 e TP3):
+- **Evolução de Arquitetura:** Estruturação da aplicação multipáginas no Streamlit no diretório `pages/`.
+- **Backend com FastAPI:** Implementação do servidor web em `src/api/main.py` com rotas documentadas (`/docs` e `/redoc`).
+- **Scraping Dinâmico:** Script em Python utilizando `Selenium WebDriver` para extração em portais com carregamento via script/AJAX.
+- **Consumo de API:** Frontend Streamlit realizando requisições assíncronas/HTTP para a API em FastAPI.
+- **Governança e Preparação para IA:** Mapeamento de casos de uso para LLMs (resumos automáticos, análise de sentimento e Q&A).
+- **Documentação de Processo:** Atualização completa dos relatórios TDSP/CRISP-DM na pasta `docs/`.
 
 ### Fora do Escopo:
-- Deploy automatizado em nuvem comercial com esteiras de CI/CD completas nesta etapa.
-- Integração de modelos de aprendizado de máquina para predição numérica (planejada para etapas posteriores).
-- Conexão direta com bancos de dados relacionais corporativos em produção.
+- Fine-tuning ou treinamento do zero de LLMs proprietárias (serão utilizadas APIs/modelos pré-treinados na etapa TP4).
+- Implantação do servidor FastAPI em contêineres Docker em ambiente de produção (Kubernetes/AWS).
 
 ## 4. Stakeholders e Papéis
-- **Patrocinadores Acadêmicos / Avaliadores:** Professores e comissão avaliadora do Instituto Infnet.
-- **Desenvolvedor e Analista de Dados:** Responsável pela arquitetura de dados, scripts de scraping, controle de versão e frontend em Streamlit.
-- **Usuários Finais:** Gestores de sustentabilidade, analistas de ESG corporativos, secretarias de meio ambiente municipais e pesquisadores do terceiro setor.
+- **Avaliadores e Docentes:** Professores e comissão técnica do Instituto Infnet.
+- **Desenvolvedor e Engenheiro de Dados:** Responsável pela construção dos pipelines de raspagem (Selenium/BeautifulSoup), desenvolvimento da API em FastAPI e arquitetura Streamlit.
+- **Gestores Urbanos e Analistas ESG:** Usuários finais que utilizam a plataforma para visualização de indicadores e consulta de notícias.
 
-## 5. Critérios de Sucesso e KPIs
-- **Desempenho da Aplicação:** Latência de carregamento das tabelas em memória inferior a 1 segundo graças ao uso de `@st.cache_data`.
-- **Integridade dos Dados:** Validação estrita das colunas obrigatórias (`Titulo`, `Resumo`, `Link`) no pipeline de upload.
-- **Persistência Funcional:** Preservação de 100% dos dados adicionados durante a sessão do usuário via `st.session_state`.
-- **Governança de Código:** Repositório estruturado seguindo rigorosamente o padrão TDSP com rastreabilidade via Git.
+## 5. Critérios de Sucesso e KPIs (Fase TP3)
+- **Disponibilidade da API:** Resposta dos endpoints `/noticias` em tempo inferior a 300ms.
+- **Eficácia da Raspagem Dinâmica:** Coleta bem-sucedida de elementos dinâmicos sem falhas de timeout com Selenium.
+- **Modularidade da Interface:** Navegação fluida entre pelo menos 4 páginas estruturadas na aplicação.
+- **Prontidão para LLMs:** Base textual rotulada e sanitizada pronta para pipelines de embeddings e inferência.

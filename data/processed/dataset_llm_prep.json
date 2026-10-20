@@ -1,0 +1,292 @@
+[
+    {
+        "id": 1,
+        "texto": "Quatro pessoas estão desaparecidas no RS após temporalSegundo a Defesa Civil, 64 municípios do estado enfrentaram problemas, sendo que 49 deles sofreram principalmente com os ventos..",
+        "tamanho_caracteres": 183,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 2,
+        "texto": "Exército brasileiro promove exercício de defesa cibernética.",
+        "tamanho_caracteres": 60,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 3,
+        "texto": "Mega-Sena acumula e pagará R$ 32 milhões na terça; confira dezenas.",
+        "tamanho_caracteres": 67,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 4,
+        "texto": "Cinco pessoas morrem em acidente com ônibus no interior de SP.",
+        "tamanho_caracteres": 62,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 5,
+        "texto": "Mega-Sena sorteia prêmio de R$ 28 milhões neste domingo.",
+        "tamanho_caracteres": 56,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 6,
+        "texto": "Aposentado ou pensionista que votar não precisará fazer Prova de Vida.",
+        "tamanho_caracteres": 70,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 7,
+        "texto": "Após semana em greve, empregados dos Correios têm dissídio na segunda.",
+        "tamanho_caracteres": 70,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 8,
+        "texto": "RJ vai criar 5 mil vagas no sistema penitenciário em três anos.",
+        "tamanho_caracteres": 63,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 9,
+        "texto": "Bolão de Presidente Venceslau (SP) leva R$ 101 milhões na Mega-Sena.",
+        "tamanho_caracteres": 68,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 10,
+        "texto": "CNH vencida entre junho e setembro tem validade extra até dezembro.",
+        "tamanho_caracteres": 67,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 11,
+        "texto": "PF faz ação para combater entrada clandestina de eletrônicos no Brasil.",
+        "tamanho_caracteres": 71,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 12,
+        "texto": "Operação combate infiltração do PCC no transporte público em São Paulo.",
+        "tamanho_caracteres": 71,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 13,
+        "texto": "Inmet prevê final de semana de chuvas nas regiões Sul e Sudeste.",
+        "tamanho_caracteres": 64,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 14,
+        "texto": "Mega-Sena sorteia prêmio acumulado de R$ 102 milhões nesta quinta.",
+        "tamanho_caracteres": 66,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 15,
+        "texto": "Justiça bloqueia bens de empresa por queda de helicóptero, no Rio",
+        "tamanho_caracteres": 65,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 16,
+        "texto": "Acidente na Floresta da Tijuca matou três turistas colombianas, que eram avó, mãe e filha, além do piloto..",
+        "tamanho_caracteres": 107,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 17,
+        "texto": "Motoristas de ônibus fazem paralisação na zona sul de São Paulo.",
+        "tamanho_caracteres": 64,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 18,
+        "texto": "Deputado estadual Marcelo Aguiar é detido após disparo em bar.",
+        "tamanho_caracteres": 62,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 19,
+        "texto": "Mega-Sena acumula; prêmio pode chegar a R$ 185 milhões na terça-feira.",
+        "tamanho_caracteres": 70,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 20,
+        "texto": "Mega-Sena sorteia prêmio acumulado em R$ 170 milhões neste domingo.",
+        "tamanho_caracteres": 67,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 21,
+        "texto": "Professora aposentada da UFRJ é baleada em assalto na zona sul do Rio.",
+        "tamanho_caracteres": 70,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 22,
+        "texto": "Três suspeitos são mortos pela polícia militar em assalto a casa em SP.",
+        "tamanho_caracteres": 71,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 23,
+        "texto": "São Paulo terá mais chuvas fortes no fim da tarde desta quinta (15).",
+        "tamanho_caracteres": 68,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 24,
+        "texto": "Polícia Federal e MPSP fazem operação contra tráfico de drogas.",
+        "tamanho_caracteres": 63,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 25,
+        "texto": "PF faz nova ação contra suspeitos de lavagem de dinheiro em postos.",
+        "tamanho_caracteres": 67,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 26,
+        "texto": "Mega-Sena acumula para R$ 170 milhões; confira os números sorteados.",
+        "tamanho_caracteres": 68,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 27,
+        "texto": "Parte do teto de túnel da Câmara desabou nesta quarta-feira.",
+        "tamanho_caracteres": 60,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 28,
+        "texto": "CCJ do Senado conclui votação da PEC da Segurança Pública.",
+        "tamanho_caracteres": 58,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    },
+    {
+        "id": 29,
+        "texto": "Mega-Sena sorteia hoje prêmio acumulado de R$ 150 milhões.",
+        "tamanho_caracteres": 58,
+        "tarefas_recomendadas": [
+            "Sumarização",
+            "Classificação de Sentimento",
+            "Q&A"
+        ]
+    }
+]

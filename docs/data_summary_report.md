@@ -1,39 +1,41 @@
-# Data Summary Report - Consolidação e Governança de Dados
+# Data Summary Report - Consolidação e Governança de Dados - Fase TP3
 
 ## 1. Visão Geral da Ingestão de Dados
-O projeto adota uma estratégia mista de aquisição de dados, combinando a extração externa automatizada com a capacidade de ingestão contínua por meio de arquivos fornecidos pelo usuário. Todos os dados são convertidos para estruturas tabulares processáveis (`pandas.DataFrame`) e preservados em disco ou em memória de sessão.
+Na fase TP3, a estratégia de aquisição de dados foi expandida para suportar interações dinâmicas e distribuição via microsserviços. Os dados agora alimentam tanto arquivos físicos no diretório `data/raw/` quanto o serviço em memória servido pela API em **FastAPI**, que passa a intermediar a entrega para o frontend em Streamlit.
 
 ---
 
-## 2. Mapeamento Detalhado das Fontes de Dados
+## 2. Mapeamento Detalhado das Fontes de Dados (Incluindo Scraping Dinâmico)
 
-| Identificador | Origem / Fonte | Formato / Protocolo | Script / Módulo | Armazenamento | Finalidade Analítica |
+| Identificador | Origem / Fonte | Formato / Protocolo | Script / Módulo | Armazenamento | Finalidade Analítica / Uso em IA |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **SRC-01** | Agência Brasil (EBC) - Editoria Geral | HTML / Web Scraping (`BeautifulSoup`) | `src/data/scraping_noticias.py` | `data/raw/noticias_sustentabilidade.csv` | Fornecer notícias reais sobre cidades, clima e saneamento para análise temática e extração de insights. |
-| **SRC-02** | Agência Brasil (EBC) - Corpus Consolidado | Texto Plano (`.txt`) | `src/data/scraping_noticias.py` | `data/raw/corpus_noticias.txt` | Servir de base textual contínua para análises de processamento de linguagem natural e geração de nuvem de palavras. |
-| **SRC-03** | Arquivos CSV de Usuário (Upload) | CSV / Multipart Upload (`st.file_uploader`) | `src/app.py` | `st.session_state.noticias_ativas` (Memória) | Permitir que gestores integrem bases de dados proprietárias para complementação analítica. |
+| **SRC-01** | Agência Brasil (EBC) - Estático | HTML / Web Scraping (`BeautifulSoup`) | `src/data/scraping_noticias.py` | `data/raw/noticias_sustentabilidade.csv` | Fornecer notícias sobre sustentabilidade urbana e ODS 11. |
+| **SRC-02** | Corpus Textual Agregado | Texto Plano (`.txt`) | `src/data/scraping_noticias.py` | `data/raw/corpus_noticias.txt` | Base para sumarização e extração de palavras-chave via LLM. |
+| **SRC-03** | Portais de Notícias Urbanas (Dinâmico) | HTML + JS / Selenium WebDriver | `src/data/scraping_dinamico.py` | `data/raw/noticias_dinamicas.csv` | Capturar conteúdos que exigem renderização assíncrona ou rolar de tela. |
+| **SRC-04** | Arquivos CSV de Usuário (Upload) | CSV / Form Upload | `pages/2_📁_Gestao_Arquivos.py` | `st.session_state` / API | Permitir que gestores injetem bases proprietárias na sessão. |
+| **SRC-05** | Servidor de Dados REST | JSON / HTTP (FastAPI) | `src/api/main.py` | Memória / JSON | Prover rotas `GET` e `POST` padronizadas para consumo da aplicação. |
 
 ---
 
-## 3. Dicionário de Variáveis (Esquema Canônico)
+## 3. Dicionário de Variáveis do Schema Expandido
 
-A tabela principal de dados (`noticias_sustentabilidade.csv` e `st.session_state.noticias_ativas`) obedece ao seguinte schema:
+A tabela abaixo descreve o contrato de dados mantido pela API e consumido pela interface gráfica:
 
-| Nome da Coluna | Tipo de Dado | Obrigatório | Descrição | Exemplo de Valor |
+| Nome do Campo | Tipo na API | Tipo em Pandas | Descrição | Exemplo de Conteúdo |
 | :--- | :--- | :--- | :--- | :--- |
-| `Titulo` | Texto (`object` / `string`) | Sim | Título ou manchete da publicação. Utilizado como chave primária de unicidade para evitar duplicatas. | *"Prefeitura expande programa de coleta seletiva"* |
-| `Resumo` | Texto (`object` / `string`) | Sim | Texto introdutório, lide ou síntese do fato noticiado. | *"Nova diretriz abrange 15 bairros com foco em reciclagem."* |
-| `Link` | Texto (`object` / `string`) | Sim | Endereço URL completo apontando para a fonte pública original da informação. | `"https://agenciabrasil.ebc.com.br/geral/noticia/..."` |
+| `id` | `integer` | `int64` | Identificador único numérico do registro. | `1` |
+| `Titulo` | `string` | `object` | Título ou manchete da publicação sobre ESG/ODS 11. | *"Expansão de parques solares em áreas urbanas"* |
+| `Resumo` | `string` | `object` | Breve descrição ou lide da matéria. | *"Projeto prevê redução de 20% na pegada de carbono."* |
+| `Link` | `string` | `object` | Endereço URL completo da fonte da notícia. | `"https://agenciabrasil.ebc.com.br/..."` |
+| `Fonte` | `string` | `object` | Mapeamento da origem (`BeautifulSoup`, `Selenium` ou `Manual`). | `"Selenium_Scraper"` |
 
 ---
 
-## 4. Avaliação de Qualidade e Tratamento dos Dados
+## 4. Governança, Tratamento e Preparação para LLMs
 
-1. **Remoção de Duplicidades:** 
-   - No processo de upload e inserção manual, aplico deduplicação automática baseada na coluna `Titulo` através do método `drop_duplicates()`.
-2. **Normalização de Links:**
-   - O script de scraping valida e converte links relativos (`/geral/...`) em URLs absolutas (`https://agenciabrasil.ebc.com.br/...`).
-3. **Consistência de Codificação:**
-   - As exportações e gravações em disco utilizam a codificação `utf-8-sig` (UTF-8 com BOM) para evitar corrupção de acentuação e caracteres especiais em softwares de planilhas como o Microsoft Excel.
-4. **Resiliência a Falhas:**
-   - A função de carregamento (`carregar_dados_raspados`) implementa checagem de existência prévia de arquivos (`os.path.exists`), instanciando DataFrames vazios em caso de ausência e evitando quebras de execução.
+1. **Padronização RESTful:**
+   - A conversão entre os dados em disco/memória e as respostas HTTP é tratada utilizando modelos Pydantic na API, garantindo tipagem forte e validação automática.
+2. **Sanitização de Texto para Modelos de Linguagem:**
+   - Caracteres especiais, quebras de linha duplicadas e marcas d'água de scraping são limpos antes do armazenamento no corpus textual, preparando os dados para etapas de embeddings e prompts.
+3. **Controle de Redundância:**
+   - A inclusão de novos registros via endpoint `POST` da FastAPI realiza checagem de duplicidade com base no título da matéria.
